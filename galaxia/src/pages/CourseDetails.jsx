@@ -26,25 +26,33 @@ const CourseDetails = () => {
 
   return (
 
-    <div className='mt-10 flex flex-wrap'>
-        <div className='bg-tertiary p-5 rounded-2xl w-full h-[470px] flex items-center' key={course.id}>
-        <div className='relative w-[370px] h-[330px]'>
-            <img
-                src={course.imagePath}
-                alt='course_image'
-                className='h-[330px] object-cover rounded-2xl'
-            />
-        </div>
-            <div className='flex flex-col justify-start ml-5 pr-5'>
-                <h3 className='text-white font-bold text-[24px]'>{course.name}</h3>
-                <p className='mt-2 text-secondary text-[14px]'>{course.description}</p>
-                <p className='mt-2 text-secondary text-[14px]'>{course.duration}</p>
+    <div className='mt-10'>
+        <div className='bg-tertiary rounded-2xl w-full h-[470px] flex items-center'>
+            <div className='relative w-[370px] h-[330px] mx-20'>
+                <img src={course.imagePath}
+                     alt="course_image"
+                     className='h-full w-full'
+                />
+            </div>
+            <div className='w-[550px] h-[330px] flex flex-col justify-start'>
+                <div className='items-center'>
+                    <h2 className='text-white font-bold text-[24px]'>{course.name}</h2>
+                    <p className='text-secondary text-[14px] mt-5'>{course.description}</p>
+                    <p className='text-secondary text-[14px] mt-2'>{course.duration} hours</p>
+                    <p className='text-secondary text-[14px] mt-2'>Includes video materials</p>
+                </div>
+                <div className='mt-20'>
+                <button
+                    type='submit'
+                    className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                >
+                    Start course
+            </button>
+                </div>
+                
             </div>
         </div>
     </div>
-
-
-
   )
 }
 
