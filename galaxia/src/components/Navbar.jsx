@@ -4,6 +4,7 @@ import { styles } from '../styles';
 import  { menu, close } from '../assets';
 
 const Navbar = () => {
+
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src="https://www.pinclipart.com/picdir/middle/320-3207944_shooting-stars-clip-art.png" alt='logo' className='w-9 h-9 object-contain' />
+          <img src="src\assets\logo.png" alt='logo' className='w-9 h-9 object-contain' />
           <p className='text-white text-[18px] font-bold cursor-pointer flex '>
           Galaxia &nbsp;
             <span className='sm:block hidden'> | Courses</span>

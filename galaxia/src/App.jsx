@@ -7,7 +7,7 @@ import EditCourse from "./components/EditCourse";
 import AddLesson from "./components/AddLessonToCourse";
 import CourseDetails from "./pages/CourseDetails";
 import LessonsDataTable from "./components/LessonsDataTable";
-//import QuizComponent from "./components/QuizComponent";
+import QuizComponent from "./components/QuizComponent";
 import Login from "./pages/LoginPage";
 
 
@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/addLesson/:id" element={<AddLesson />}></Route>
           <Route path="/courseDetails/:id" element={<CourseDetails />}></Route>
           <Route exact path='/course/:id/lessons' element={<LessonsDataTable/>}></Route>
-          {/* <Route path='/course/:id/quiz' element={<QuizComponent />}></Route> */}
+          <Route path='/course/:id/quiz' element={<QuizComponent />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
