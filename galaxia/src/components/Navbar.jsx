@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styles } from '../styles';
 import  { menu, close } from '../assets';
+import { useLocalState } from '../hooks/useLocalStorage'
+import axios from '../custom-axios/axios';
 
 const Navbar = () => {
+
+  const [jwt, setJwt] = useLocalState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -21,6 +27,23 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleLogout = async () => {
+
+    try{
+      const response = await axios.post('/auth/logout');
+      localStorage.removeItem('jwt');
+      setIsLoggedIn(false);
+      navigate('/login');
+    } catch(error){
+      console.error('Logout failed');
+    }
+  }
+
+  useEffect(() => {
+    const jwtToken = localStorage.getItem('jwt');
+    setIsLoggedIn(!!jwtToken);
   }, []);
 
   return (
@@ -67,7 +90,9 @@ const Navbar = () => {
               <a href="/contact">Contact</a>
             </li>
 
-            <li
+            {!isLoggedIn && (
+              <>
+                <li
               className={`${
                 active === "Register" ? "text-white" : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
@@ -84,6 +109,37 @@ const Navbar = () => {
             >
               <a href="/login">Login</a>
             </li>
+              </>
+            )}
+
+            {isLoggedIn && (
+                <li
+                className={`${
+                  active === "Logout" ? "text-white" : "text-secondary"
+                } hover:text-white text-[18px] font-medium cursor-pointer`}
+                onClick={handleLogout}
+              >
+                <a>Logout</a>
+              </li>
+            )}
+
+            {/* <li
+              className={`${
+                active === "Register" ? "text-white" : "text-secondary"
+              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              onClick={() => setActive("Register")}
+            >
+              <a href="/register">Register</a>
+            </li>
+
+            <li
+              className={`${
+                active === "Login" ? "text-white" : "text-secondary"
+              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              onClick={() => setActive("Login")}
+            >
+              <a href="/login">Login</a>
+            </li> */}
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
