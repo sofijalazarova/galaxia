@@ -1,34 +1,55 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import axios from "../custom-axios/axios";
+import { useNavigate } from "react-router-dom";
+import { useLocalState } from "../hooks/useLocalStorage";
+
 
 const Login = () => {
 
-    const formRef = useRef();
-    const [form, setForm] = useState({
-      name: "",
-      email: "",
-      message: "",
-    });
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [jwt, setJwt] = useLocalState("", "jwt");
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if(jwt){
+        navigate('/');
+      }
+    })
+
+    const handleLogin = async (event) => {
+
+      event.preventDefault();
+
+      const reqBody = {
+        email: email,
+        password: password
+      };
+
+      axios.post('/auth/authenticate', reqBody)
+      .then((response) => {
+        console.log('Status code: ', response.status);
+
+        if(response.status === 200) return response.data.token;
+        else return Promise.reject('Invalid login attempt');
+      })
+      .then((token) => {
+        console.log(token);
+        setJwt(token);
+      })
+      .catch((error) => {
+        console.log('Login failed: ', error);
+      })     
+    }
   
-    const [loading, setLoading] = useState(false);
+     const [loading, setLoading] = useState(false);
   
-    const handleChange = (e) => {
-      const { target } = e;
-      const { name, value } = target;
-  
-      setForm({
-        ...form,
-        [name]: value,
-      });
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setLoading(true);
-    };
   
     return (
       <div
@@ -38,44 +59,31 @@ const Login = () => {
           variants={slideIn("left", "tween", 0.2, 1)}
           className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
         >
-          <p className={styles.sectionSubText}>Get in touch</p>
-          <h3 className={styles.sectionHeadText}>Contact.</h3>
+          <h3 className={styles.sectionHeadText}>Login</h3>
   
           <form
-            ref={formRef}
-            onSubmit={handleSubmit}
+            onSubmit={handleLogin}
             className='mt-12 flex flex-col gap-8'
           >
             <label className='flex flex-col'>
-              <span className='text-white font-medium mb-4'>Your Name</span>
+              <span className='text-white font-medium mb-4'>Email</span>
               <input
                 type='text'
-                name='name'
-                value={form.name}
-                onChange={handleChange}
-                placeholder="What's your good name?"
-                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-              />
-            </label>
-            <label className='flex flex-col'>
-              <span className='text-white font-medium mb-4'>Your email</span>
-              <input
-                type='email'
                 name='email'
-                value={form.email}
-                onChange={handleChange}
-                placeholder="What's your web address?"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="Enter valid email"
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
             <label className='flex flex-col'>
-              <span className='text-white font-medium mb-4'>Your Message</span>
-              <textarea
-                rows={7}
-                name='message'
-                value={form.message}
-                onChange={handleChange}
-                placeholder='What you want to say?'
+              <span className='text-white font-medium mb-4'>Password</span>
+              <input
+                type='password'
+                name='password'
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="Enter valid password"
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
@@ -84,7 +92,7 @@ const Login = () => {
               type='submit'
               className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
             >
-              {loading ? "Sending..." : "Send"}
+              {loading ? "Sending..." : "Login"}
             </button>
           </form>
         </motion.div>

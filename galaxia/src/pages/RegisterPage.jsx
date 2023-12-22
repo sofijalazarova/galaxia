@@ -3,31 +3,39 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import axios from "../custom-axios/axios";
+
 
 const Register = () => {
 
-    const formRef = useRef();
-    const [form, setForm] = useState({
-      name: "",
-      email: "",
-      message: "",
-    });
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [jwt, setJwt] = useState("", "jwt");
+
+    const handleRegistration = async (event) => {
+      event.preventDefault();
+
+      const userData = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      };
+
+      try{
+        const response = await axios.post('/auth/register', userData);
+        const jwt = response.data.token;
+        window.location.href = '/login';
+      } catch(error){
+          console.error('Registration failed:', error);
+      }
+    }
   
-    const [loading, setLoading] = useState(false);
+     const [loading, setLoading] = useState(false);
   
-    const handleChange = (e) => {
-      const { target } = e;
-      const { name, value } = target;
-  
-      setForm({
-        ...form,
-        [name]: value,
-      });
-    };
-  
-    const handleSubmit = (e) => {
-      
-    };
   
     return (
       <div
@@ -40,29 +48,39 @@ const Register = () => {
           <h3 className={styles.sectionHeadText}>Register</h3>
   
           <form
-            ref={formRef}
-            onSubmit={handleSubmit}
+            onSubmit={handleRegistration}
             className='mt-12 flex flex-col gap-8'
           >
             <label className='flex flex-col'>
-              <span className='text-white font-medium mb-4'>Username</span>
+              <span className='text-white font-medium mb-4'>First name</span>
               <input
                 type='text'
-                name='name'
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Enter username"
+                name='firstName'
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                placeholder="Enter first name"
+                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              />
+            </label>
+            <label className='flex flex-col'>
+              <span className='text-white font-medium mb-4'>Last name</span>
+              <input
+                type='text'
+                name='lastName'
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+                placeholder="Enter last name"
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
             <label className='flex flex-col'>
               <span className='text-white font-medium mb-4'>Email</span>
               <input
-                type='email'
+                type='text'
                 name='email'
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Enter a valid email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="Enter valid email"
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
@@ -71,9 +89,9 @@ const Register = () => {
               <input
                 type='password'
                 name='password'
-                value={form.password}
-                onChange={handleChange}
-                placeholder="Enter password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="Enter valid password"
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
