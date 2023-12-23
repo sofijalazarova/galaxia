@@ -1,6 +1,6 @@
 import axios from '../custom-axios/axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { SectionWrapper } from '../hoc';
 
 
@@ -8,6 +8,8 @@ const LessonsDataTable = () => {
 
     const { id } = useParams();
     const [course, setCourse] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchLessonDetails = async () => {
@@ -42,7 +44,7 @@ const LessonsDataTable = () => {
                 <iframe className='md:w-full sm:w-full'
                   width="750"
                   height="500"
-                  src="https://www.youtube.com/embed/Lsim6FYtXSw?si=qQoyNkILtV7aivsC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  src={lesson.videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen>
                 </iframe>
               </div>        
@@ -51,7 +53,7 @@ const LessonsDataTable = () => {
       </div>
       <div className='text-center'>
         <button
-            onClick={() => {navigate("/course/" + course.id + "/lessons")}}
+            onClick={() => {navigate("/course/" + course.id + "/quiz")}}
             className='m-10 p-10 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'>
           Start quiz
         </button>

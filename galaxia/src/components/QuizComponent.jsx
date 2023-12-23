@@ -70,28 +70,28 @@ const QuizComponent = () => {
                             <label>
                                 <input type='checkbox'
                                 onChange={() => handleAnswerSelection(question.id, 1)}/>
-                                1. {question.option1}
+                                 {question.option1}
                             </label>
                         </div>
                         <div>
                             <label>
                                 <input type='checkbox'
                                 onChange={() => handleAnswerSelection(question.id, 2)}/>
-                                2. {question.option2}
+                                 {question.option2}
                             </label>
                         </div>
                         <div>
                             <label>
                                 <input type='checkbox'
                                 onChange={() => handleAnswerSelection(question.id, 3)}/>
-                                3. {question.option3}
+                                 {question.option3}
                             </label>
                         </div>
                         <div>
                             <label>
                                 <input type='checkbox'
                                 onChange={() => handleAnswerSelection(question.id, 4)}/>
-                                4. {question.option4}
+                                 {question.option4}
                             </label>     
                         </div>              
                     </div>     

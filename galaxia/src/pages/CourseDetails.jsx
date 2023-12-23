@@ -22,6 +22,17 @@ const CourseDetails = () => {
         fetchCourseDetails();
     }, [id]);
 
+    // const enrollInCourse = async () => {
+    //     try {
+
+    //         await axios.post('/enrollments', { courseId: course.id});
+    //         navigate('/course/${course.id}/lessons');
+
+    //     } catch(error){
+    //         console.log("Error occured while enrolling in the course: " + error);
+    //     }
+    // }
+
     if(course === null){
         return <div>Loading...</div>
     }
@@ -104,9 +115,10 @@ const CourseDetails = () => {
             <div className='mt-5 mb-10 h-full flex flex-col items-center justify-center'>
                 <button
                     onClick={() => {navigate("/course/" + course.id + "/lessons")}}
+                    //onClick={enrollInCourse}
                     className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
                 >
-                    Start course
+                    Enroll course
                 </button>
             </div>
         </div>
