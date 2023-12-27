@@ -13,6 +13,8 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [error, setError] = useState(null);
+
     const [jwt, setJwt] = useLocalState("", "jwt");
 
     const navigate = useNavigate();
@@ -37,7 +39,9 @@ const Login = () => {
         console.log('Status code: ', response.status);
 
         if(response.status === 200) return response.data.token;
-        else return Promise.reject('Invalid login attempt');
+        else {
+          setError('Invalid login attempt')
+          return Promise.reject('Invalid login attempt');};
       })
       .then((token) => {
         console.log(token);
@@ -45,7 +49,9 @@ const Login = () => {
       })
       .catch((error) => {
         console.log('Login failed: ', error);
-      })     
+        setError('Invalid login attempt');
+      });
+      
     }
   
      const [loading, setLoading] = useState(false);
@@ -87,6 +93,13 @@ const Login = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
+            <div>
+              <p>Don't have an account? <a href="/register">Register here!</a></p>
+            </div>
+
+            {error && (
+              <p className="text-red-500 mt-4">{error}</p>
+            )}
   
             <button
               type='submit'

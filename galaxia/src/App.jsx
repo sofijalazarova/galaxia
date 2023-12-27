@@ -11,6 +11,7 @@ import QuizComponent from "./components/QuizComponent";
 import Login from "./pages/LoginPage";
 import { useLocalState } from "./hooks/useLocalStorage";
 import { useEffect } from "react";
+import Proba from "./pages/proba";
 
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
   const [jwt, setJwt] = useLocalState("", "jwt");
 
   useEffect(() => {
-    console.log('JWT is: ${jwt}');
+    console.log(jwt);
   }, [jwt]);
 
 
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/courseDetails/:id" element={<CourseDetails />}></Route>
           <Route exact path='/course/:id/lessons' element={<LessonsDataTable/>}></Route>
           <Route path='/course/:id/quiz' element={<QuizComponent />}></Route>
+          <Route path='/currentUser' element={<Proba />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

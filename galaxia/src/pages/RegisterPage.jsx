@@ -4,6 +4,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import axios from "../custom-axios/axios";
+import { useLocalState } from "../hooks/useLocalStorage";
 
 
 const Register = () => {
@@ -13,7 +14,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [jwt, setJwt] = useState("", "jwt");
+    const [jwt, setJwt] = useLocalState("", "jwt");
 
     const handleRegistration = async (event) => {
       event.preventDefault();
@@ -27,7 +28,7 @@ const Register = () => {
 
       try{
         const response = await axios.post('/auth/register', userData);
-        const jwt = response.data.token;
+        setJwt(response.data.token);
         window.location.href = '/login';
       } catch(error){
           console.error('Registration failed:', error);
@@ -95,6 +96,10 @@ const Register = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
+
+            <div>
+              <p>Already have an account? <a href="/login">Login here!</a></p>
+            </div>
   
             <button
               type='submit'

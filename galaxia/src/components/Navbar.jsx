@@ -15,6 +15,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -33,7 +34,9 @@ const Navbar = () => {
 
     try{
       const response = await axios.post('/auth/logout');
+      console.log('Logout');
       localStorage.removeItem('jwt');
+      setJwt("");
       setIsLoggedIn(false);
       navigate('/login');
     } catch(error){
@@ -43,8 +46,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const jwtToken = localStorage.getItem('jwt');
-    setIsLoggedIn(!!jwtToken);
-  }, []);
+    if(jwtToken) {
+      setIsLoggedIn(true);
+      setJwt(jwtToken);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [setJwt]);
 
   return (
     <nav

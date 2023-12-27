@@ -41,7 +41,7 @@ const LessonsDataTable = () => {
               <div className='mb-10 text-secondary text-[18px]'>{lesson.title}</div>
               <div className='text-secondary text-[15px]'>{lesson.content}</div>
               <div className='m-10'>
-                <iframe className='md:w-full sm:w-full'
+                <iframe className='md:w-full sm:w-full xs:w-full'
                   width="750"
                   height="500"
                   src={lesson.videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
