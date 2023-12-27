@@ -49,8 +49,6 @@ const AddLesson = () => {
         }
     }
 
-
-
     return (
         <div
           className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
@@ -76,18 +74,7 @@ const AddLesson = () => {
                   className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
-              {/* <label className='flex flex-col'>
-                <span className='text-white font-medium mb-4'>Lesson content</span>
-                <input
-                  type='text'
-                  name='content'
-                  value={content}
-                  onChange={handleContentChange}
-                  placeholder="Enter lesson content"
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-                />
-              </label> */}
-
+            
               <label className='flex flex-col'>
                 <span className='text-white font-medium mb-4'>Lesson content</span>
                 <textarea
@@ -129,7 +116,7 @@ const AddLesson = () => {
     
           <motion.div
             variants={slideIn("right", "tween", 0.2, 1)}
-            className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+            className='xl:flex-1 xl:h-auto md:h-[30px] h-[350px]'
           >
           </motion.div>
         </div>

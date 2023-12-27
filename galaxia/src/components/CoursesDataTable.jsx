@@ -108,6 +108,7 @@ const CoursesDataTable = () => {
                           >
                             Remove course
                           </button>    
+                                                  
                           </div>                               
                         </Tilt>                                
             ))
