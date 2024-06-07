@@ -1,67 +1,48 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { styles } from '../styles';
-import  { menu, close } from '../assets';
-import { useLocalState } from '../hooks/useLocalStorage'
+import { menu, close } from '../assets';
+import { useLocalState } from '../hooks/useLocalStorage';
 import axios from '../custom-axios/axios';
+import Logo1 from '../../public/logo1.png';
 
 const Navbar = () => {
-
-  const [jwt, setJwt] = useLocalState();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [jwt, setJwt] = useLocalState("", "jwt");
   const navigate = useNavigate();
 
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-  };
+      setScrolled(scrollTop > 100);
+    };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleLogout = async () => {
-
-    try{
-      const response = await axios.post('/auth/logout');
-      console.log('Logout');
+    try {
+      await axios.post('/auth/logout');
       localStorage.removeItem('jwt');
       setJwt("");
-      setIsLoggedIn(false);
       navigate('/login');
-    } catch(error){
+    } catch (error) {
       console.error('Logout failed');
     }
-  }
+  };
 
-  useEffect(() => {
-    const jwtToken = localStorage.getItem('jwt');
-    if(jwtToken) {
-      setIsLoggedIn(true);
-      setJwt(jwtToken);
-    } else {
-      setIsLoggedIn(false);
+  useEffect(() => {  
+    if (jwt) {
+      setJwt(jwt);
     }
   }, [setJwt]);
 
   return (
-    <nav
-      className={`${
-        styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled ? "bg-primary" : "bg-transparent"
-      }`}
-    >
+    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${scrolled ? "bg-black" : "bg-transparent"}`}>
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
           to='/'
@@ -71,83 +52,44 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src="src\assets\logo.png" alt='logo' className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex '>
-          Galaxia &nbsp;
+          <img src={Logo1} alt='logo' className='w-9 h-9 object-contain' />
+          <p className='text-white text-[18px] font-bold cursor-pointer flex'>
+            Galaxia &nbsp;
             <span className='sm:block hidden'> | Courses</span>
           </p>
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
-          
-            <li
-              className={`${
-                active === "Available Courses" ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive("Available Courses")}
-            >
-              <a href="/courses">Available Courses</a>
-            </li>
+          <li
+            className={`${active === "Available Courses" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
+            onClick={() => setActive("Available Courses")}
+          >
+            <Link to="/courses">Available Courses</Link>
+          </li>
 
-            <li
-              className={`${
-                active === "Contact" ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive("Contact")}
-            >
-              <a href="/contact">Contact</a>
-            </li>
-
-            {!isLoggedIn && (
-              <>
-                <li
-              className={`${
-                active === "Register" ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive("Register")}
-            >
-              <a href="/register">Register</a>
-            </li>
-
-            <li
-              className={`${
-                active === "Login" ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive("Login")}
-            >
-              <a href="/login">Login</a>
-            </li>
-              </>
-            )}
-
-            {isLoggedIn && (
-                <li
-                className={`${
-                  active === "Logout" ? "text-white" : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
-                onClick={handleLogout}
+          {!jwt ? (
+            <>
+              <li
+                className={`${active === "Register" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
+                onClick={() => setActive("Register")}
               >
-                <a>Logout</a>
+                <Link to="/register">Register</Link>
               </li>
-            )}
-
-            {/* <li
-              className={`${
-                active === "Register" ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive("Register")}
-            >
-              <a href="/register">Register</a>
-            </li>
-
+              <li
+                className={`${active === "Login" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
+                onClick={() => setActive("Login")}
+              >
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          ) : (
             <li
-              className={`${
-                active === "Login" ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive("Login")}
+              className={`${active === "Logout" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
+              onClick={handleLogout}
             >
-              <a href="/login">Login</a>
-            </li> */}
+              <a>Logout</a>
+            </li>
+          )}
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
@@ -158,60 +100,51 @@ const Navbar = () => {
             onClick={() => setToggle(!toggle)}
           />
 
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-          >
+          <div className={`${!toggle ? "hidden" : "flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
+              <li
+                className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "Available Courses" ? "text-white" : "text-secondary"}`}
+                onClick={() => {
+                  setToggle(!toggle);
+                  setActive("Available Courses");
+                }}
+              >
+                <Link to="/courses">Available Courses</Link>
+              </li>
               
+              {!jwt ? (
+                <>
+                  <li
+                    className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "Register" ? "text-white" : "text-secondary"}`}
+                    onClick={() => {
+                      setToggle(!toggle);
+                      setActive("Register");
+                    }}
+                  >
+                    <Link to="/register">Register</Link>
+                  </li>
+                  <li
+                    className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "Login" ? "text-white" : "text-secondary"}`}
+                    onClick={() => {
+                      setToggle(!toggle);
+                      setActive("Login");
+                    }}
+                  >
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              ) : (
                 <li
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === "Available Courses" ? "text-white" : "text-secondary"
-                  }`}
+                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "Logout" ? "text-white" : "text-secondary"}`}
                   onClick={() => {
                     setToggle(!toggle);
-                    setActive("Available Courses");
+                    setActive("Logout");
+                    handleLogout();
                   }}
                 >
-                  <a href="/contact">Available Courses</a>
+                  <a>Logout</a>
                 </li>
-
-                <li
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === "Contact" ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive("Contact");
-                  }}
-                >
-                  <a href="/contact">Contact</a>
-                </li>
-
-                <li
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === "Register" ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive("Register");
-                  }}
-                >
-                  <a href="/register">Register</a>
-                </li>
-
-                <li
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === "Login" ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive("Login");
-                  }}
-                >
-                  <a href="/login">Login</a>
-                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -221,3 +154,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

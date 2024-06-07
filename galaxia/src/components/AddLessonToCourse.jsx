@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const AddLesson = () => {
 
@@ -45,7 +45,7 @@ const AddLesson = () => {
             await submitAddLesson(id, lessonData);
 
         }catch(error){
-            console.log("Error occured while adding lessonnnn: ", error);
+            console.log("Error occured while adding lesson: ", error);
         }
     }
 
@@ -55,7 +55,7 @@ const AddLesson = () => {
         >
           <motion.div
             variants={slideIn("left", "tween", 0.2, 1)}
-            className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+            className='flex-[0.75] bg-black p-8 rounded-2xl'
           >
             <h3 className={styles.sectionHeadText}>Add Lesson</h3>
     
@@ -71,7 +71,7 @@ const AddLesson = () => {
                   value={title}
                   onChange={handleTitleChange}
                   placeholder="Enter lesson title"
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
             
@@ -83,7 +83,7 @@ const AddLesson = () => {
                   value={content}
                   onChange={handleContentChange}
                   placeholder='Enter lesson content'
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
 
@@ -95,19 +95,19 @@ const AddLesson = () => {
                   value={videoUrl}
                   onChange={handleVideoUrlChange}
                   placeholder="Enter video URL"
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
                  
               <button
                 type='submit'
-                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
               >
                 {loading ? "Sending..." : "Add new lesson"}
               </button>
               <button
                 onClick={() => cancelHandler()}
-                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
               >
                 Cancel
               </button>

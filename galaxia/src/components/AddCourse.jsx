@@ -4,11 +4,8 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
-import { useNavigate } from 'react-router-dom';
 
 const AddCourse = () => {
-
-    const navigate = useNavigate();
   
     const [loading, setLoading] = useState(false);
 
@@ -56,7 +53,7 @@ const AddCourse = () => {
         >
           <motion.div
             variants={slideIn("left", "tween", 0.2, 1)}
-            className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+            className='flex-[0.75] bg-black p-8 rounded-2xl'
           >
             <h3 className={styles.sectionHeadText}>Add Course</h3>
     
@@ -72,7 +69,7 @@ const AddCourse = () => {
                   value={name}
                   onChange={nameChangeHandler}
                   placeholder="Enter course name"
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
               
@@ -84,7 +81,7 @@ const AddCourse = () => {
                   value={description}
                   onChange={descriptionChangeHandler}
                   placeholder='Enter course description'
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
 
@@ -96,7 +93,7 @@ const AddCourse = () => {
                   value={duration}
                   onChange={durationChangeHandler}
                   placeholder="Enter course duration"
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
               <label className='flex flex-col'>
@@ -107,20 +104,20 @@ const AddCourse = () => {
                   value={imagePath}
                   onChange={imagePathChangeHandler}
                   placeholder="Enter image url"
-                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
     
               <button
                 type='submit'
-                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='bg-black-100 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
               >
                 {loading ? "Sending..." : "Add new course"}
               </button>
               <button
                 type='submit'
                 onClick={() => cancelHandler()}
-                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='bg-black-100 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
               >
                 Cancel
               </button>

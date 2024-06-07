@@ -2,16 +2,24 @@ import axios from '../custom-axios/axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { SectionWrapper } from '../hoc';
+import { useLocalState } from '../hooks/useLocalStorage';
 
 
 const LessonsDataTable = () => {
 
     const { id } = useParams();
     const [course, setCourse] = useState(null);
+    const [jwt, setJwt] = useLocalState("", "jwt");
 
     const navigate = useNavigate();
 
     useEffect(() => {
+
+      if(!jwt){
+        navigate('/login');
+      }
+      else{
+
         const fetchLessonDetails = async () => {
           try {
             const response = await axios.get(`/${id}`);
@@ -20,10 +28,9 @@ const LessonsDataTable = () => {
             console.log("Error occurred while fetching lessons details: " + error);
           }
         };
-        fetchLessonDetails();
+        fetchLessonDetails();  }
       }, [id]);
 
-    // Check if course is null before rendering
     if (course === null) {
         return <div>Loading...</div>;
       }
@@ -31,7 +38,7 @@ const LessonsDataTable = () => {
   return (
 
   <div>
-    <div className='w-full h-[100%] bg-tertiary mt-10'>
+    <div className='w-full h-[100%] bg-black mt-10'>
       <div className='text-center p-10'>
         <h1 className='text-white font-bold text-[24px]'>Course - {course.name}</h1>
       </div>
@@ -54,7 +61,7 @@ const LessonsDataTable = () => {
       <div className='text-center'>
         <button
             onClick={() => {navigate("/course/" + course.id + "/quiz")}}
-            className='m-10 p-10 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'>
+            className='m-10 p-10 rounded-xl outline-none w-fit text-black bg-white font-bold shadow-md shadow-primary'>
           Start quiz
         </button>
       </div>

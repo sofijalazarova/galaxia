@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
@@ -58,7 +57,7 @@ const CoursesDataTable = () => {
       <br/>
       <button
                 onClick={() => navigate('/create')}
-                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='bg-black py-3 px-8 rounded-2xl outline w-fit text-white font-bold shadow-md shadow-black'
                           >
                 Add new course
     </button> 
@@ -68,19 +67,19 @@ const CoursesDataTable = () => {
             {
                 courses &&
                       courses.map((course, index) => (                                     
-                        <Tilt key={course.id}
+                        <div key={course.id}
                           options={{
                             max: 45,
                             scale: 1,
                             speed: 450,
                           }}
-                          className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+                          className='bg-black p-5 rounded-2xl sm:w-[360px] w-full'
                         >
                           <div className='relative w-full h-[230px]'>
                             <img
                               src={course.imagePath}
                               alt='project_image'
-                              className='h-full object-cover rounded-2xl'
+                              className='h-full w-full object-cover rounded-xl'
                               onClick={() => {
                                 navigate("/courseDetails/" + course.id);
                               }}
@@ -96,7 +95,7 @@ const CoursesDataTable = () => {
                           <div className="flex gap-2">
                           <button
                             onClick={() => navigate("/edit/" + course.id)}
-                            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary md-2'
+                            className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary md-2'
                           >
                             Edit course
                           </button>   
@@ -104,13 +103,12 @@ const CoursesDataTable = () => {
                           <button
                             type='submit'
                             onClick={() => removeCourse(course.id)}
-                            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                            className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
                           >
                             Remove course
-                          </button>    
-                                                  
+                          </button>                                                     
                           </div>                               
-                        </Tilt>                                
+                        </div>                                
             ))
           }
       </div>

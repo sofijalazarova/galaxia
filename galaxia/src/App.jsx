@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { About, Contact, Navbar, StarsCanvas, CoursesDataTable} from './components';
+import { Navbar, StarsCanvas, CoursesDataTable} from './components';
 import Register from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import AddCourse from "./components/AddCourse";
@@ -9,31 +9,40 @@ import CourseDetails from "./pages/CourseDetails";
 import LessonsDataTable from "./components/LessonsDataTable";
 import QuizComponent from "./components/QuizComponent";
 import Login from "./pages/LoginPage";
-import { useLocalState } from "./hooks/useLocalStorage";
-import { useEffect } from "react";
-import Proba from "./pages/proba";
-
+import PlanetPage from "./pages/PlanetPage";
+import Lenis from "lenis";
+import Certificate from "./components/Certificate";
 
 const App = () => {
 
-  const [jwt, setJwt] = useLocalState("", "jwt");
+  const lenis = new Lenis();
+  //const [jwt, setJwt] = useLocalState("", "jwt");
 
-  useEffect(() => {
-    console.log(jwt);
-  }, [jwt]);
+
+  function raf(time){
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+
+  // useEffect(() => {
+  //   console.log(jwt);
+  // }, [jwt]);
 
 
   return (
     <BrowserRouter>
       <div className="relative z-0">
         <div className="bg bg-cover bg-no-repeat bg-center">
-          <Navbar />
+          <Navbar/>
         </div>
         <StarsCanvas/>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/courses" element={<CoursesDataTable />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/courses" element={<CoursesDataTable />} />      
+          <Route path="/planet/:name" element={<PlanetPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />}></Route>
           <Route path="/create" element={<AddCourse />}></Route>
@@ -42,7 +51,7 @@ const App = () => {
           <Route path="/courseDetails/:id" element={<CourseDetails />}></Route>
           <Route exact path='/course/:id/lessons' element={<LessonsDataTable/>}></Route>
           <Route path='/course/:id/quiz' element={<QuizComponent />}></Route>
-          <Route path='/currentUser' element={<Proba />}></Route>
+          <Route path="/certificate" element={<Certificate />} />
         </Routes>
       </div>
     </BrowserRouter>

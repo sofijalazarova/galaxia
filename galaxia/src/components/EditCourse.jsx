@@ -72,7 +72,7 @@ const EditCourse = () => {
       >
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
-          className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+          className='flex-[0.75] bg-black p-8 rounded-2xl'
         >
           <h3 className={styles.sectionHeadText}>Edit course</h3>
   
@@ -88,7 +88,7 @@ const EditCourse = () => {
                 value={name}
                 onChange={nameChangeHandler}
                 placeholder="Enter course name"
-                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
             <label className='flex flex-col'>
@@ -99,7 +99,7 @@ const EditCourse = () => {
                 value={description}
                 onChange={descriptionChangeHandler}
                 placeholder="Enter course description"
-                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                className=' py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
             <label className='flex flex-col'>
@@ -110,7 +110,7 @@ const EditCourse = () => {
                 value={duration}
                 onChange={durationChangeHandler}
                 placeholder="Enter course duration"
-                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
             <label className='flex flex-col'>
@@ -121,19 +121,19 @@ const EditCourse = () => {
                 value={imagePath}
                 onChange={imagePathChangeHandler}
                 placeholder="Enter course image URL"
-                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
             <button
               type='submit'
-              className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+              className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
             >
               {loading ? "Sending..." : "Update course"}
             </button>
             <button
                 type='submit'
                 onClick={() => cancelHandler()}
-                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
               >
                 Cancel
               </button>
@@ -146,7 +146,7 @@ const EditCourse = () => {
         >
           <button
             onClick={() => navigate("/addLesson/" + id)}
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary md-2'
+            className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary md-2 mt-2'
           >
             Add new lesson to the course
           </button>   
