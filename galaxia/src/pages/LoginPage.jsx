@@ -6,6 +6,7 @@ import { slideIn } from "../utils/motion";
 import axios from "../custom-axios/axios";
 import { useNavigate } from "react-router-dom";
 import { useLocalState } from "../hooks/useLocalStorage";
+import Space from '../../public/space2.png';
 
 
 const Login = () => {
@@ -21,7 +22,8 @@ const Login = () => {
 
     useEffect(() => {
       if(jwt){
-        navigate('/');
+        //navigate('/');
+        navigate('/galaxia/');
       }
     })
 
@@ -94,7 +96,7 @@ const Login = () => {
               />
             </label>
             <div>
-              <p>Don't have an account? <a href="/register">Register here!</a></p>
+              <p>Don't have an account? <a href="/galaxia/register">Register here!</a></p>
             </div>
 
             {error && (
@@ -114,7 +116,7 @@ const Login = () => {
           variants={slideIn("right", "tween", 0.2, 1)}
           className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
         >
-          <img src="src\assets\space2.png"/>
+          <img src={Space}/>
         </motion.div>
       </div>
     );

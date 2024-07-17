@@ -5,6 +5,7 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import axios from "../custom-axios/axios";
 import { useLocalState } from "../hooks/useLocalStorage";
+import Space from '../../public/space2.png';
 
 
 const Register = () => {
@@ -100,7 +101,7 @@ const Register = () => {
             </label>
 
             <div>
-              <p>Already have an account? <a href="/login">Login here!</a></p>
+              <p>Already have an account? <a href="/galaxia/login">Login here!</a></p>
             </div>
   
             <button
@@ -116,7 +117,7 @@ const Register = () => {
           variants={slideIn("right", "tween", 0.2, 1)}
           className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
         >
-          <img src="src\assets\space2.png"/>
+          <img src={Space}/>
         </motion.div>
       </div>
     );

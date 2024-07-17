@@ -33,7 +33,8 @@ const Navbar = () => {
       localStorage.removeItem('user');
       setUser("");
       setJwt("");
-      navigate('/login');
+      //navigate('/login');
+      navigate('/galaxia/login');
     } catch (error) {
       console.error('Logout failed');
     }
