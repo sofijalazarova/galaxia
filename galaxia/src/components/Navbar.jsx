@@ -49,7 +49,7 @@ const Navbar = () => {
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${scrolled ? "bg-black" : "bg-transparent"}`}>
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
-          to='/'
+          to='/galaxia/'
           className='flex items-center gap-2'
           onClick={() => {
             setActive("");
@@ -68,7 +68,7 @@ const Navbar = () => {
             className={`${active === "Available Courses" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
             onClick={() => setActive("Available Courses")}
           >
-            <Link to="/courses">Available Courses</Link>
+            <Link to="/galaxia/courses">Available Courses</Link>
           </li>
 
           {!jwt ? (
@@ -77,13 +77,13 @@ const Navbar = () => {
                 className={`${active === "Register" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
                 onClick={() => setActive("Register")}
               >
-                <Link to="/register">Register</Link>
+                <Link to="/galaxia/register">Register</Link>
               </li>
               <li
                 className={`${active === "Login" ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
                 onClick={() => setActive("Login")}
               >
-                <Link to="/login">Login</Link>
+                <Link to="/galaxia/login">Login</Link>
               </li>
             </>
           ) : (
@@ -113,7 +113,7 @@ const Navbar = () => {
                   setActive("Available Courses");
                 }}
               >
-                <Link to="/courses">Available Courses</Link>
+                <Link to="/galaxia/courses">Available Courses</Link>
               </li>
               
               {!jwt ? (
@@ -125,7 +125,7 @@ const Navbar = () => {
                       setActive("Register");
                     }}
                   >
-                    <Link to="/register">Register</Link>
+                    <Link to="/galaxia/register">Register</Link>
                   </li>
                   <li
                     className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "Login" ? "text-white" : "text-secondary"}`}
@@ -134,7 +134,7 @@ const Navbar = () => {
                       setActive("Login");
                     }}
                   >
-                    <Link to="/login">Login</Link>
+                    <Link to="/galaxia/login">Login</Link>
                   </li>
                 </>
               ) : (

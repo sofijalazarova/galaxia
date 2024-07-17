@@ -56,7 +56,7 @@ const CoursesDataTable = () => {
       </div>
       <br/>
       <button
-                onClick={() => navigate('/create')}
+                onClick={() => navigate('/galaxia/create')}
                 className='bg-black py-3 px-8 rounded-2xl outline w-fit text-white font-bold shadow-md shadow-black'
                           >
                 Add new course
@@ -81,7 +81,7 @@ const CoursesDataTable = () => {
                               alt='project_image'
                               className='h-full w-full object-cover rounded-xl'
                               onClick={() => {
-                                navigate("/courseDetails/" + course.id);
+                                navigate("/galaxia/courseDetails/" + course.id);
                               }}
                             />                                    
                           </div>                 
@@ -94,7 +94,7 @@ const CoursesDataTable = () => {
                           <br/>
                           <div className="flex gap-2">
                           <button
-                            onClick={() => navigate("/edit/" + course.id)}
+                            onClick={() => navigate("/galaxia/edit/" + course.id)}
                             className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary md-2'
                           >
                             Edit course

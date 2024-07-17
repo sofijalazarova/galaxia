@@ -45,14 +45,14 @@ const About = () => {
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>            
-              <Card description="Mercury" imagePath={mercuryImage} path="/planet/mercury"/>
-              <Card description="Venus" imagePath={venusImage} path="/planet/venus"/>    
-              <Card description="Earth" imagePath={earthImage} path="/planet/earth"/>    
-              <Card description="Mars" imagePath={marsImage} path="/planet/mars"/>          
-              <Card description="Jupiter" imagePath={jupiterImage} path="/planet/jupiter"/>
-              <Card description="Saturn" imagePath={saturnImage} path="/planet/saturn"/>    
-              <Card description="Uranus" imagePath={uranusImage} path="/planet/uranus"/>    
-              <Card description="Neptune" imagePath={neptuneImage} path="/planet/neptune"/>              
+              <Card description="Mercury" imagePath={mercuryImage} path="/galaxia/planet/mercury"/>
+              <Card description="Venus" imagePath={venusImage} path="/galaxia/planet/venus"/>    
+              <Card description="Earth" imagePath={earthImage} path="/galaxia/planet/earth"/>    
+              <Card description="Mars" imagePath={marsImage} path="/galaxia/planet/mars"/>          
+              <Card description="Jupiter" imagePath={jupiterImage} path="/galaxia/planet/jupiter"/>
+              <Card description="Saturn" imagePath={saturnImage} path="/galaxia/planet/saturn"/>    
+              <Card description="Uranus" imagePath={uranusImage} path="/galaxia/planet/uranus"/>    
+              <Card description="Neptune" imagePath={neptuneImage} path="/galaxia/planet/neptune"/>              
       </div>
 </div>
 

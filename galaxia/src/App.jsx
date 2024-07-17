@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Navbar, StarsCanvas, CoursesDataTable} from './components';
 import Register from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
@@ -33,28 +33,42 @@ const App = () => {
 
 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    //   <div className="relative z-0">
+    //     <div className="bg bg-cover bg-no-repeat bg-center">
+    //       <Navbar/>
+    //     </div>
+    //     <StarsCanvas/>
+    //     <Routes>
+    //       <Route path="/" element={<HomePage />} />
+    //       <Route path="/courses" element={<CoursesDataTable />} />      
+    //       <Route path="/planet/:name" element={<PlanetPage />} />
+    //       <Route path="/register" element={<Register />} />
+    //       <Route path="/login" element={<Login />}></Route>
+    //       <Route path="/create" element={<AddCourse />}></Route>
+    //       <Route path="/edit/:id" element={<EditCourse />}></Route>
+    //       <Route path="/addLesson/:id" element={<AddLesson />}></Route>
+    //       <Route path="/courseDetails/:id" element={<CourseDetails />}></Route>
+    //       <Route exact path='/course/:id/lessons' element={<LessonsDataTable/>}></Route>
+    //       <Route path='/course/:id/quiz' element={<QuizComponent />}></Route>
+    //       <Route path="/certificate" element={<Certificate />} />
+    //     </Routes>
+    //   </div>
+    // </BrowserRouter>
+
+       <>
+        
+        
       <div className="relative z-0">
         <div className="bg bg-cover bg-no-repeat bg-center">
           <Navbar/>
         </div>
         <StarsCanvas/>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/courses" element={<CoursesDataTable />} />      
-          <Route path="/planet/:name" element={<PlanetPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/create" element={<AddCourse />}></Route>
-          <Route path="/edit/:id" element={<EditCourse />}></Route>
-          <Route path="/addLesson/:id" element={<AddLesson />}></Route>
-          <Route path="/courseDetails/:id" element={<CourseDetails />}></Route>
-          <Route exact path='/course/:id/lessons' element={<LessonsDataTable/>}></Route>
-          <Route path='/course/:id/quiz' element={<QuizComponent />}></Route>
-          <Route path="/certificate" element={<Certificate />} />
-        </Routes>
+        <Outlet/>
       </div>
-    </BrowserRouter>
+        
+       </>
+
   );
 };
 

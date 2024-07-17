@@ -11,7 +11,7 @@ import Moon from '../../public/moon.png';
             
                 <div className='p-[1px]' style={{width: "300px", height: "300px"}}>
                     <div className='flex justify-evenly items-center flex-col'>
-                        <a href="/planet/sun"><img src={Sun} alt='planet_image' className='object-contain' /></a>           
+                        <a href="/galaxia/planet/sun"><img src={Sun} alt='planet_image' className='object-contain' /></a>           
                     </div>
                 </div>
             
@@ -37,7 +37,7 @@ import Moon from '../../public/moon.png';
          
                 <div className='p-[1px] ' style={{width: "400px", height: "300px"}}>
                     <div className='flex justify-evenly items-center flex-col'>
-                        <a href="/planet/moon"><img src={Moon} alt='planet_image' className='object-contain' /></a>           
+                        <a href="/galaxia/planet/moon"><img src={Moon} alt='planet_image' className='object-contain' /></a>           
                     </div>
                 </div>
                       
