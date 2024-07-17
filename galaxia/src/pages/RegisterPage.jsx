@@ -15,6 +15,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
 
     const [jwt, setJwt] = useLocalState("", "jwt");
+    const [user, setUser] = useLocalState("", "user");
 
     const handleRegistration = async (event) => {
       event.preventDefault();
@@ -29,6 +30,7 @@ const Register = () => {
       try{
         const response = await axios.post('/auth/register', userData);
         setJwt(response.data.token);
+        setUser(userData.email);
         window.location.href = '/login';
       } catch(error){
           console.error('Registration failed:', error);

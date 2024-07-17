@@ -1,13 +1,14 @@
-import earthImage from "../assets/planets/earth.png";
-import marsImage from "../assets/planets/mars.png";
-import neptuneImage from "../assets/planets/neptune.png";
-import jupiterImage from "../assets/planets/jupiter.png";
-import uranusImage from "../assets/planets/uranus.png";
-import venusImage from "../assets/planets/venus.png";
-import saturnImage from "../assets/planets/saturn.png";
-import mercuryImage from "../assets/planets/planet.png";
-import sunImage from "../assets/planets/sun.png";
-import moonImage from "../assets/planets/moon.png";
+import earthImage from "../../public/earth.png";
+import marsImage from "../../public/mars.png";
+import neptuneImage from "../../public/neptune.png";
+import jupiterImage from "../../public/jupiter.png";
+import uranusImage from "../../public/uranus.png";
+import venusImage from "../../public/venus.png";
+import mercuryImage from "../../public/planet.png";
+//import sunImage from "../assets/planets/sun.png";
+import saturnImage from '../../public/saturn.png';
+import sunImage from "../../public/sun.png";
+import moonImage from "../../public/moon.png";
 
 export const planetsData = [
     {
@@ -66,3 +67,5 @@ export const planetsData = [
     },
 
   ];
+
+  console.log(planetsData[0].imageUrl);

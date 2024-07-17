@@ -1,5 +1,7 @@
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
+import Sun from '../../public/sun.png';
+import Moon from '../../public/moon.png';
 
   const SunAndMoon = () => {
   
@@ -9,7 +11,7 @@ import { styles } from "../styles";
             
                 <div className='p-[1px]' style={{width: "300px", height: "300px"}}>
                     <div className='flex justify-evenly items-center flex-col'>
-                        <a href="/planet/sun"><img src="src\assets\planets\sun.png" alt='planet_image' className='object-contain' /></a>           
+                        <a href="/planet/sun"><img src={Sun} alt='planet_image' className='object-contain' /></a>           
                     </div>
                 </div>
             
@@ -35,11 +37,13 @@ import { styles } from "../styles";
          
                 <div className='p-[1px] ' style={{width: "400px", height: "300px"}}>
                     <div className='flex justify-evenly items-center flex-col'>
-                        <a href="/planet/moon"><img src="src\assets\planets\moon.png" alt='planet_image' className='object-contain' /></a>           
+                        <a href="/planet/moon"><img src={Moon} alt='planet_image' className='object-contain' /></a>           
                     </div>
                 </div>
                       
         </div>
+
+      
   </div>
   
     );

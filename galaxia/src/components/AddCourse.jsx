@@ -53,7 +53,7 @@ const AddCourse = () => {
         >
           <motion.div
             variants={slideIn("left", "tween", 0.2, 1)}
-            className='flex-[0.75] bg-black p-8 rounded-2xl'
+            className='flex-[0.45] bg-black p-8'
           >
             <h3 className={styles.sectionHeadText}>Add Course</h3>
     
@@ -69,7 +69,7 @@ const AddCourse = () => {
                   value={name}
                   onChange={nameChangeHandler}
                   placeholder="Enter course name"
-                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
               
@@ -81,7 +81,7 @@ const AddCourse = () => {
                   value={description}
                   onChange={descriptionChangeHandler}
                   placeholder='Enter course description'
-                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
 
@@ -93,7 +93,7 @@ const AddCourse = () => {
                   value={duration}
                   onChange={durationChangeHandler}
                   placeholder="Enter course duration"
-                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
               <label className='flex flex-col'>
@@ -104,30 +104,24 @@ const AddCourse = () => {
                   value={imagePath}
                   onChange={imagePathChangeHandler}
                   placeholder="Enter image url"
-                  className='bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  className='py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                 />
               </label>
     
               <button
                 type='submit'
-                className='bg-black-100 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
               >
                 {loading ? "Sending..." : "Add new course"}
               </button>
               <button
                 type='submit'
                 onClick={() => cancelHandler()}
-                className='bg-black-100 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary'
               >
                 Cancel
               </button>
             </form>
-          </motion.div>
-    
-          <motion.div
-            variants={slideIn("right", "tween", 0.2, 1)}
-            className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
-          >
           </motion.div>
         </div>
       );

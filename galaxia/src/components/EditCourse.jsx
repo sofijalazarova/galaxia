@@ -72,7 +72,7 @@ const EditCourse = () => {
       >
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
-          className='flex-[0.75] bg-black p-8 rounded-2xl'
+          className='flex-[0.75] bg-black p-8'
         >
           <h3 className={styles.sectionHeadText}>Edit course</h3>
   

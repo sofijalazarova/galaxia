@@ -3,6 +3,7 @@ import { SectionWrapper } from '../hoc';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../custom-axios/axios';
 import { Tilt } from 'react-tilt';
+import { useLocalState } from '../hooks/useLocalStorage';
 
 const CourseDetails = () => {
 
@@ -10,6 +11,7 @@ const CourseDetails = () => {
 
     const { id } = useParams();
     const [course, setCourse] = useState(null);
+    const [user, setUser] = useLocalState("", "user");
 
     useEffect(() => {
         const fetchCourseDetails = async () => {
@@ -23,16 +25,18 @@ const CourseDetails = () => {
         fetchCourseDetails();
     }, [id]);
 
-    // const enrollInCourse = async () => {
-    //     try {
+    const enrollInCourse = async () => {
 
-    //         await axios.post('/enrollments', { courseId: course.id});
-    //         navigate('/course/${course.id}/lessons');
+        try {
+            console.log(user);
+            await axios.post('/enrollments', { courseId: course.id, email: user });
+          
+            navigate("/course/" + course.id + "/lessons")
 
-    //     } catch(error){
-    //         console.log("Error occured while enrolling in the course: " + error);
-    //     }
-    // }
+        } catch(error){
+            console.log("Error occured while enrolling in the course: " + error);
+        }
+    }
 
     if(course === null){
         return <div>Loading...</div>
@@ -60,8 +64,7 @@ const CourseDetails = () => {
                     </div>
                     <div className='mt-5 mb-10 h-full flex flex-col items-center justify-center'>
                         <button
-                            onClick={() => {navigate("/course/" + course.id + "/lessons")}}
-                            //onClick={enrollInCourse}
+                            onClick={enrollInCourse}
                             className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary hover:bg-emerald-500'
                         >
                             Enroll course

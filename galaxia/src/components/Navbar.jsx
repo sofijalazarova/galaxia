@@ -4,10 +4,12 @@ import { styles } from '../styles';
 import { menu, close } from '../assets';
 import { useLocalState } from '../hooks/useLocalStorage';
 import axios from '../custom-axios/axios';
-import Logo1 from '../../public/logo1.png';
+//import Logo1 from '../../public/logo1.png';
+import Logo1 from '/logo1.png';
 
 const Navbar = () => {
   const [jwt, setJwt] = useLocalState("", "jwt");
+  const [user, setUser] = useLocalState("", "user");
   const navigate = useNavigate();
 
   const [active, setActive] = useState("");
@@ -28,6 +30,8 @@ const Navbar = () => {
     try {
       await axios.post('/auth/logout');
       localStorage.removeItem('jwt');
+      localStorage.removeItem('user');
+      setUser("");
       setJwt("");
       navigate('/login');
     } catch (error) {

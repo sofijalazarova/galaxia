@@ -3,6 +3,14 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
+import earthImage from "../../public/earth.png";
+import marsImage from "../../public/mars.png";
+import neptuneImage from "../../public/neptune.png";
+import jupiterImage from "../../public/jupiter.png";
+import uranusImage from "../../public/uranus.png";
+import venusImage from "../../public/venus.png";
+import mercuryImage from "../../public/planet.png";
+import saturnImage from '../../public/saturn.png';
 
 
 export const Card = (props) => {
@@ -37,14 +45,14 @@ const About = () => {
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>            
-              <Card description="Mercury" imagePath="src\assets\planets\mercury.png" path="/planet/mercury"/>
-              <Card description="Venus" imagePath="src\assets\planets\venus.png" path="/planet/venus"/>    
-              <Card description="Earth" imagePath="src\assets\planets\earth.png" path="/planet/earth"/>    
-              <Card description="Mars" imagePath="src\assets\planets\mars.png" path="/planet/mars"/>          
-              <Card description="Jupiter" imagePath="src\assets\planets\jupiter.png" path="/planet/jupiter"/>
-              <Card description="Saturn" imagePath="src\assets\planets\saturn.png" path="/planet/saturn"/>    
-              <Card description="Uranus" imagePath="src\assets\planets\uranus.png" path="/planet/uranus"/>    
-              <Card description="Neptune" imagePath="src\assets\planets\neptune.png" path="/planet/neptune"/>              
+              <Card description="Mercury" imagePath={mercuryImage} path="/planet/mercury"/>
+              <Card description="Venus" imagePath={venusImage} path="/planet/venus"/>    
+              <Card description="Earth" imagePath={earthImage} path="/planet/earth"/>    
+              <Card description="Mars" imagePath={marsImage} path="/planet/mars"/>          
+              <Card description="Jupiter" imagePath={jupiterImage} path="/planet/jupiter"/>
+              <Card description="Saturn" imagePath={saturnImage} path="/planet/saturn"/>    
+              <Card description="Uranus" imagePath={uranusImage} path="/planet/uranus"/>    
+              <Card description="Neptune" imagePath={neptuneImage} path="/planet/neptune"/>              
       </div>
 </div>
 

@@ -41,7 +41,7 @@ const CoursesDataTable = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} `}>Check out our free courses!</p>
-        <h2 className={`${styles.sectionHeadText}`}>Courses.</h2>
+        <h2 className={`${styles.sectionHeadText}`}>Courses</h2>
       </motion.div>
 
       <div className='w-full flex'>
@@ -63,7 +63,7 @@ const CoursesDataTable = () => {
     </button> 
 
     
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className='mt-20 flex flex-wrap gap-9'>
             {
                 courses &&
                       courses.map((course, index) => (                                     
