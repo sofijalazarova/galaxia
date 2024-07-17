@@ -1,7 +1,7 @@
 {
   "name": "galaxia",
   "private": true,
-  "proxy": "https://galaxia-sofija.azurewebsites.net/",
+  "proxy": "https://galaxia-courses.azurewebsites.net/",
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://sofijalazarova.github.io/galaxia/",
