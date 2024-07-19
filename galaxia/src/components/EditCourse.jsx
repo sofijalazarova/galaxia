@@ -145,7 +145,7 @@ const EditCourse = () => {
           className='xl:flex-1 xl:h-auto md:h-[50px] h-[350px]'
         >
           <button
-            onClick={() => navigate("/addLesson/" + id)}
+            onClick={() => navigate("/galaxia/addLesson/" + id)}
             className='py-3 px-8 rounded-xl outline w-fit text-white font-bold shadow-md shadow-primary md-2 mt-2'
           >
             Add new lesson to the course
