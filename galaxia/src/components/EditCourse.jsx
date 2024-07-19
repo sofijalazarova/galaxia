@@ -60,7 +60,7 @@ const EditCourse = () => {
             imagePath: imagePath
         })
         .then((response) => {
-            navigate("/");
+            navigate("/galaxia");
         }).catch((error) => {
             alert("Error occured updating course: " + error);
         });

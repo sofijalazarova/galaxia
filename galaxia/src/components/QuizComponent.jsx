@@ -45,7 +45,7 @@ const QuizComponent = () => {
 
     const handleSubmitQuiz = () => {
         calculateScore();
-        navigate("/certificate");
+        navigate("/galaxia/certificate");
     }
 
     if (course === null) {

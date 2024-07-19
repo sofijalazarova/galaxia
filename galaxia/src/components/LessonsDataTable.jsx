@@ -60,7 +60,7 @@ const LessonsDataTable = () => {
       </div>
       <div className='text-center'>
         <button
-            onClick={() => {navigate("/course/" + course.id + "/quiz")}}
+            onClick={() => {navigate("/galaxia/course/" + course.id + "/quiz")}}
             className='m-10 p-10 rounded-xl outline-none w-fit text-black bg-white font-bold shadow-md shadow-primary'>
           Start quiz
         </button>

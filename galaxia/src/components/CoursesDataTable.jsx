@@ -31,7 +31,7 @@ const CoursesDataTable = () => {
     try {
       await deleteCourse(id);
       setCoursesData();
-      navigate("/");
+      navigate("/galaxia");
     } catch(error){
       console.log("Error occured removing course: " + error);
     }

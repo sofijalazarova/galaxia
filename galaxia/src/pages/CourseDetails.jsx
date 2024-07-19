@@ -31,7 +31,7 @@ const CourseDetails = () => {
             console.log(user);
             await axios.post('/enrollments', { courseId: course.id, email: user });
           
-            navigate("/course/" + course.id + "/lessons")
+            navigate("/galaxia/course/" + course.id + "/lessons")
 
         } catch(error){
             console.log("Error occured while enrolling in the course: " + error);
