@@ -8,7 +8,7 @@ export function useCourseForm(){
     const submitAddCourse = async (courseData) => {
         try {
             await addCourse(courseData);
-            navigate("/");
+            navigate("/galaxia");
         } catch(error){
             alert("Error occured while adding the course: " + error);
         }
@@ -21,7 +21,7 @@ export function useCourseForm(){
     const submitUpdateCourse = (id, courseData) => {
         updateCourse(id, courseData)
           .then((response) => {
-            navigate("/");
+            navigate("/galaxia");
           })
           .catch((error) => {
             alert("Error occurred updating course: " + error);
@@ -32,7 +32,7 @@ export function useCourseForm(){
 
           try {
             await addLesson(id, lessonData);
-            navigate("/");
+            navigate("/galaxia");
           } catch (error) {
             alert("Error occurred while adding a lesson");
           }

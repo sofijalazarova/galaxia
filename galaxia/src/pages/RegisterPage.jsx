@@ -32,7 +32,7 @@ const Register = () => {
         const response = await axios.post('/auth/register', userData);
         setJwt(response.data.token);
         setUser(userData.email);
-        window.location.href = '/login';
+        window.location.href = '/galaxia/login';
       } catch(error){
           console.error('Registration failed:', error);
       }
