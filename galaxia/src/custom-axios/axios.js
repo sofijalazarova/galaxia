@@ -6,7 +6,7 @@ const instance = axios.create({
     //baseURL: 'https://galaxia-courses.azurewebsites.net/api',
     headers: {
         'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods' : 'POST, GET, PUT, DELETE',
+        'Access-Control-Allow-Methods' : 'POST, GET, PUT, DELETE, OPTIONS',
         'Content-Type': 'application/json'
     },
     withCredentials: true
